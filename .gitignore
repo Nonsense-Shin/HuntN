@@ -1,0 +1,25 @@
+# --- Python Environment ---
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# --- Configuration & Secrets (CRITICAL for Ethical Hackers) ---
+.env
+config.local.json
+credentials.json
+*.pem
+*.key
+
+# --- Tool Output & Scan Data ---
+# Stop giant recon scans from being pushed to GitHub
+logs/
+*.log
+output/
+results/
+scans/
+
+# --- System Files ---
+.DS_Store
