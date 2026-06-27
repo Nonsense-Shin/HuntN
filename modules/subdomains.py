@@ -3,35 +3,6 @@ HuntN — Module 2: Subdomain Enumeration (Fortified Edition)
 ──────────────────────────────────────────────────────────────────────────────
 "Ask and it will be given to you; seek and you will find; knock and the door
 will be opened to you." — Matthew 7:7
-
-Root-cause fixes for inconsistent live host counts (16 → 7 → 2 regression):
-  ─────────────────────────────────────────────────────────────────────────
-  PROBLEM 1 — Circular merge: all.txt was built from *.txt in subs_dir, which
-    included last-run's live.txt.  On resume or re-run, httpx-filtered hosts
-    were re-fed back into passive data, and any that timed out on the second
-    httpx pass were silently dropped → live count shrank each run.
-  FIX: Passive tools now write to a dedicated raw/ subdirectory. Merging only
-    reads raw/*.txt, never live.txt or live_full.txt.
-
-  PROBLEM 2 — Double httpx: two back-to-back httpx calls on the same input
-    list means network flakiness hits twice. On large scopes the second call
-    (clean URL list) almost always times out on a different subset → different
-    count every run.
-  FIX: One httpx call with -json -o live_full.txt, then a simple grep/jq
-    pass extracts the clean URL list. Zero extra network traffic.
-
-  PROBLEM 3 — subfinder -all + -recursive on the same run with no dedup
-    between steps meant the merge step saw thousands of dupes, inflating
-    all.txt, and dnsx / alterx worked on an unnecessarily huge input.
-  FIX: append_unique used between every passive step. Merge is deduped with
-    sort -u before feeding into dnsx.
-
-  PROBLEM 4 — No retry / back-off for httpx on large infra. Connections were
-    refused or rate-limited and silently dropped.
-  FIX: httpx now runs with -retries 3 -timeout 15 -delay 100ms on live check.
-
-Scale note: designed to handle infinite infrastructure — all intermediate
-files stream to disk, nothing lives in RAM lists.
 """
 
 import subprocess
