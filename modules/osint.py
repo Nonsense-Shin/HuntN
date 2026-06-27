@@ -2,12 +2,6 @@
 HuntN — Module 1: Passive OSINT & Domain Intelligence
 ──────────────────────────────────────────────────────────────────────────────
 Covers: WHOIS, DNS, ASN, crt.sh, OTX, VirusTotal, URLScan, Shodan, dork lists
-
-Changes from original:
-  - asnmap call uses run_cmd_pipe (was silently using shell pipe without timeout)
-  - _wayback_domains timeout increased to 45s (was timing out on slow CDX)
-  - Email security check now also logs DKIM selector discovery hints
-  - All print_info / run_cmd calls are consistent with updated utils API
 """
 
 import subprocess
