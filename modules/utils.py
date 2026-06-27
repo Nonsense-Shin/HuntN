@@ -4,16 +4,6 @@ HuntN Utilities — Shared helpers used by all modules.
 "For I know the plans I have for you, declares the Lord, plans to prosper
 you and not to harm you, plans to give you hope and a future." — Jer 29:11
 
-Changes and fixes:
-  - run_cmd: shell/list conflict fixed (string + shell=False → ['sh','-c',cmd])
-  - run_cmd_pipe: retries on SIGPIPE and rate-limit (HTTP 429) detection
-  - run_cmd_with_retry: new helper for commands that need exponential back-off
-  - run_cmd_live: streams stdout line-by-line (good for long tools)
-  - _cleanup_empty_file: handles permission errors and BOM artifacts
-  - count_lines: handles Path objects and missing files cleanly
-  - WorkspaceManager.read: strips BOM characters that some Go tools emit
-  - append_unique: now uses buffered I/O for large files (millions of lines)
-  - curl_json: adds retry + user-agent for WAF bypass on some hosts
 """
 
 import os
