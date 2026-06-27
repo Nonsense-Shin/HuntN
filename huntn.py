@@ -13,20 +13,6 @@
 
   Bug Bounty Reconnaissance Framework
   Author: Nonsense Shin and lots of AI | For educational and authorized use only.
-
-Changes from original:
-  - import re moved from inside main() to top-level.
-  - Added --gentle flag: caps threads to 20, adds STAGE_COOLDOWN seconds of
-    sleep between every module run. Use this on budget hardware (i3-N305,
-    8 GB RAM) or any target where the previous run saturated your NIC and
-    dropped your internet. The scan takes the same amount of work — it just
-    breathes between stages so your network stack has time to recover.
-  - STAGE_COOLDOWN: 0s by default (no change for normal runs), 5s in gentle
-    mode. Prevents ephemeral port exhaustion on long multi-day runs.
-  - Renamed `allowed` → `elapsed` in the final summary for clarity.
-  - gentle and stage_cooldown passed into scan_context so modules that
-    care (nuclei_scan, js_analysis) can tune their own concurrency.
-  - IP target detection block cleaned up (was using late import re).
 """
 
 import os
