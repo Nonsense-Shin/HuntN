@@ -3,11 +3,6 @@ HuntN — Module 3: Infrastructure Mapping
 ──────────────────────────────────────────────────────────────────────────────
 Covers: naabu port scanning, nmap service detection, TLS/SSL (tlsx, sslscan),
         VHost discovery, ASN IP space, reverse DNS
-
-Changes from original:
-  - VHost ffuf command fixed (wordlist piped via stdin with -w -:FUZZ)
-  - subprocess import moved to top-level (was inside function)
-  - asnmap timeout set to 120s (was inheriting 600s default, known to hang)
 """
 
 import subprocess
