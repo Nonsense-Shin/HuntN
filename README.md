@@ -1,7 +1,6 @@
 # 🛰️ HUNTn: The Hand of Light Uncovering Darkness
 
-**HUNTn** is a automated intelligence gathering, attack surface mapping and vulnerability scanning framework engineered specifically for **Ethical Hackers**. 
-> This is thee older version of the framework, the image shown below is from the current modifed versions that can automate and find vulnerabilites which won't be shared anytime soon.
+> **HUNTn** is a automated intelligence gathering, attack surface mapping and vulnerability scanning framework engineered specifically for **Ethical Hackers**. 
 
 <img width="1000" height="1000" alt="Screenshot 2026-06-20 154735" src="https://github.com/user-attachments/assets/212aecd9-11b5-45c2-ab06-1699621b1ca8" />
 
