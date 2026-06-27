@@ -1,7 +1,6 @@
 """
 HuntN — Module 5: API Discovery & Fuzzing
 "Ask, and it will be given to you; seek, and you will find." — Matthew 7:7
-(Minor fix: httpx probe now uses -retries 2 -timeout 15 for large infra.)
 """
 
 import subprocess
